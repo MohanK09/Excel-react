@@ -23,11 +23,11 @@ const HomeScreen = () => {
     const DataSet = [
         {
             columns: [
-                {title: "Province State", style: {font: {sz: "18", bold: true}}, width: {wpx: 125}}, // width in pixels
+                // {title: "Province State", style: {font: {sz: "18", bold: true}}, width: {wpx: 125}}, // width in pixels
                 {title: "Country Region", style: {font: {sz: "18", bold: true}}, width: {wch: 30}}, // width in characters
                 {title: "Confirmed", style: {font: {sz: "18", bold: true}}, width: {wpx: 100}}, // width in pixels
-                {title: "Deaths", style: {font: {sz: "18", bold: true}}, width: {wpx: 125}}, // width in pixels
-                {title: "Recovered", style: {font: {sz: "18", bold: true}}, width: {wpx: 100}}, // width in pixels
+                {title: "Sectored", style: {font: {sz: "18", bold: true}}, width: {wpx: 125}}, // width in pixels
+                // {title: "Recovered", style: {font: {sz: "18", bold: true}}, width: {wpx: 100}}, // width in pixels
                 {title: "Active", style: {font: {sz: "18", bold: true}}, width: {wpx: 125}}, // width in pixels
                 {title: "Incident Rate", style: {font: {sz: "18", bold: true}}, width: {wch: 30}}, // width in characters
                 {title: "Latitude", style: {font: {sz: "18", bold: true}}, width: {wpx: 125}}, // width in pixels
@@ -36,11 +36,11 @@ const HomeScreen = () => {
                 
             ],
             data: exporData.map((data) => [
-                {value: data.provinceState, style: {font: {sz: "14"}}},
+                // {value: data.provinceState, style: {font: {sz: "14"}}},
                 {value: data.countryRegion, style: {font: {sz: "14"}}},
                 {value: data.confirmed, style:{font: {color: {rgb: "ffffff"}}, fill: {patternType: "solid", fgColor: {rgb: "3461eb"}}}},
                 {value: data.deaths, style:{font: {color: {rgb: "ffffff"}}, fill: {patternType: "solid", fgColor: {rgb: "eb1207"}}}},
-                {value: data.recovered, style:{font: {color: {rgb: "ffffff"}}, fill: {patternType: "solid", fgColor: {rgb: "4bd909"}}}},
+                // {value: data.recovered, style:{font: {color: {rgb: "ffffff"}}, fill: {patternType: "solid", fgColor: {rgb: "4bd909"}}}},
                 {value: data.active, style:{font: {color: {rgb: "ffffff"}}, fill: {patternType: "solid", fgColor: {rgb: "ebc907"}}}},
                 {value: data.incidentRate, style:{font: {color: {rgb: "ffffff"}}, fill: {patternType: "solid", fgColor: {rgb: "35bdb4"}}}},
                 {value: data.lat, style:{font: {color: {rgb: "ffffff"}}, fill: {patternType: "solid", fgColor: {rgb: "ed14f5"}}}},
@@ -84,19 +84,19 @@ const HomeScreen = () => {
                     </Form>
                     {exporData.length !== 0 ? (
                          <ExcelFile 
-                         filename="Covid-19 Data" 
+                         filename="Excel Color Report" 
                          element={<button type="button" className="btn btn-success float-right m-3">Export Data</button>}>
-                             <ExcelSheet dataSet={DataSet} name="Covid-19 Country Report"/>
+                             <ExcelSheet dataSet={DataSet} name="Excel Color Report"/>
                          </ExcelFile>
                     ): null}                   
                     <Table responsive>
                         <thead>
                             <tr>
-                                <th>Province State</th>
+                                {/* <th>Province State</th> */}
                                 <th>Country Region</th>
                                 <th>Confirmed</th>
-                                <th>Deaths</th>
-                                <th>Recovered</th>
+                                <th>Sectored</th>
+                                {/* <th>Recovered</th> */}
                                 <th>Active</th>
                                 <th>Incident Rate</th>
                                 <th>Latitude</th>
@@ -119,11 +119,11 @@ const HomeScreen = () => {
                                 <>
                                {exporData.map((data) => (
                                    <tr key={data.uid}>
-                                        <td>{data.provinceState}</td>
+                                        {/* <td>{data.provinceState}</td> */}
                                         <td>{data.countryRegion}</td>
                                         <td>{data.confirmed}</td>
                                         <td>{data.deaths}</td>
-                                        <td>{data.recovered}</td>
+                                        {/* <td>{data.recovered}</td> */}
                                         <td>{data.active}</td>
                                         <td>{data.incidentRate}</td>
                                         <td>{data.lat}</td>
