@@ -20,13 +20,25 @@ const HomeScreen = () => {
         border-color: red;
     `;
 
+    /**Appending Multiple color property Based on value */
+    const getFGColor = (quantity) => {
+        if (quantity > 10000) {
+            return "dc3545";
+        }
+        else if (quantity >= 100 && quantity <= 10000) {
+            return "ffc107";
+        } else {
+            return "28a745";
+        }
+    }
+
     const DataSet = [
         {
             columns: [
                 // {title: "Province State", style: {font: {sz: "18", bold: true}}, width: {wpx: 125}}, // width in pixels
                 {title: "Country Region", style: {font: {sz: "18", bold: true}}, width: {wch: 30}}, // width in characters
                 {title: "Confirmed", style: {font: {sz: "18", bold: true}}, width: {wpx: 100}}, // width in pixels
-                {title: "Sectored", style: {font: {sz: "18", bold: true}}, width: {wpx: 125}}, // width in pixels
+                {title: "Quantity", style: {font: {sz: "18", bold: true}}, width: {wpx: 125}}, // width in pixels
                 // {title: "Recovered", style: {font: {sz: "18", bold: true}}, width: {wpx: 100}}, // width in pixels
                 {title: "Active", style: {font: {sz: "18", bold: true}}, width: {wpx: 125}}, // width in pixels
                 {title: "Incident Rate", style: {font: {sz: "18", bold: true}}, width: {wch: 30}}, // width in characters
@@ -38,13 +50,14 @@ const HomeScreen = () => {
             data: exporData.map((data) => [
                 // {value: data.provinceState, style: {font: {sz: "14"}}},
                 {value: data.countryRegion, style: {font: {sz: "14"}}},
-                {value: data.confirmed, style:{font: {color: {rgb: "ffffff"}}, fill: {patternType: "solid", fgColor: {rgb: "3461eb"}}}},
-                {value: data.deaths, style:{font: {color: {rgb: "ffffff"}}, fill: {patternType: "solid", fgColor: {rgb: "eb1207"}}}},
+                {value: data.confirmed, style:{font: {sz: "14"}}},
+                // {value: data.deaths, style:{font: {color: {rgb: "ffffff" }}, fill: {patternType: "solid", fgColor: {rgb: data.deaths > 5000 ?"dc3545" : (data.deaths > 5000 && data.deaths < 10000) ? "ffc107" : "28a745" }}}},
+                {value: data.deaths, style:{font: {color: {rgb: "ffffff" }}, fill: {patternType: "solid", fgColor: {rgb: getFGColor(data.deaths) }}}},
                 // {value: data.recovered, style:{font: {color: {rgb: "ffffff"}}, fill: {patternType: "solid", fgColor: {rgb: "4bd909"}}}},
-                {value: data.active, style:{font: {color: {rgb: "ffffff"}}, fill: {patternType: "solid", fgColor: {rgb: "ebc907"}}}},
-                {value: data.incidentRate, style:{font: {color: {rgb: "ffffff"}}, fill: {patternType: "solid", fgColor: {rgb: "35bdb4"}}}},
-                {value: data.lat, style:{font: {color: {rgb: "ffffff"}}, fill: {patternType: "solid", fgColor: {rgb: "ed14f5"}}}},
-                {value: data.long, style:{font: {color: {rgb: "ffffff"}}, fill: {patternType: "solid", fgColor: {rgb: "ed14f5"}}}},
+                {value: data.active, style:{font: {sz: "14"}}},
+                {value: data.incidentRate, style:{font: {sz: "14"}}},
+                {value: data.lat, style:{font: {sz: "14"}}},
+                {value: data.long, style:{font: {sz: "14"}}},
                 {value: data.lastUpdate, style:{font: {color: {rgb: "ffffff"}}, fill: {patternType: "solid", fgColor: {rgb: "000000"}}}},
             ])
         }
@@ -95,7 +108,7 @@ const HomeScreen = () => {
                                 {/* <th>Province State</th> */}
                                 <th>Country Region</th>
                                 <th>Confirmed</th>
-                                <th>Sectored</th>
+                                <th>Quantity</th>
                                 {/* <th>Recovered</th> */}
                                 <th>Active</th>
                                 <th>Incident Rate</th>
